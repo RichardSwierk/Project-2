@@ -36,7 +36,7 @@ do
 	chage -d 0 $username
 	echo -e "Creating email...\nFrom: Richard T Swierk\nSubject: CSI230 Project 2 - Your temp account passsword\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass"
 	#Create the email
-	echo -e 'From: Richard T Swierk\nSubject: CSI230 Project 2 - Your temp account password\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass' > email.txt
+	echo -e "From: Richard T Swierk\nSubject: CSI230 Project 2 - Your temp account password\nPassword must be changed after first login\nUsername: "$username"\nPassword: "$tempPass > email.txt
 	echo -e "Sending email..."
 	#Send the email
 	sendmail $email < email.txt
