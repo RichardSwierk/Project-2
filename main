@@ -36,7 +36,7 @@ do
 	echo -e 'Subject: Your temp account password\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass' > email.txt
 	echo -e "Sending email..."
 	#Send the email
-	sendmail $email < email.txt
+	sendmail -f "Richard T Swierk" $email < email.txt
 	echo -e "Email sent..."
 	rm email.txt
 done
