@@ -37,7 +37,7 @@ do
 	echo -e "Sending email..."
 	#Send the email
 	sendmail $email < email.txt
-	echo -e "Email sent..."
+	echo -e "Email sent...\n\n\n"
 	rm email.txt
 done
 
