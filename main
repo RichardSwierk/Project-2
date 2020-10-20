@@ -23,16 +23,21 @@ do
 	then
 		#If user exists then change user password, set default shell to bash, and add them to the CSI230 group
 		usermod -p $tempPass -s /bin/bash -g CSI230 $username
+		echo -e "$username already exists\nChanging password...\nPassword: $tempPass"
 	else
 		#IF the user does not exist then create user with a home directory, add the user to group CSI230, set the users password to the random password created above
 		useradd -m -g CSI230 -p $tempPass -s /bin/bash $username
+		echo -e "Creating user...\nUsername: $username\nPassword: $tempPass"
 	fi
 	#Makes the user change there password after the first time they login
 	chage -d 0 $username
+	echo -e "Creating email...\nSubject: Your temp account passsword\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass"
 	#Create the email
 	echo -e 'Subject: Your temp account password\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass' > email.txt
+	echo -e "Sending email..."
 	#Send the email
 	sendmail $email < email.txt
+	echo -e "Email sent..."
 	rm email.txt
 done
 
