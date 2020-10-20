@@ -2,7 +2,10 @@
 #Author: Richard T Swierk
 
 #List of the emails used
-emails=(rswierk10@gmail.com richardswierk8@gmail.com rtswierk@gmail.com)
+#emails=(rswierk10@gmail.com richardswierk8@gmail.com rtswierk@gmail.com)
+emails=(rswierk10@gmail.com richardswierk8@gmail.com rtswierk@gmail.com dpaden@champlain.edu)
+#emails=(rswierk10@gmail.com)
+
 
 #Check if the script is run as root and exits if false
 if [ "$EUID" -ne 0 ]
@@ -31,9 +34,9 @@ do
 	fi
 	#Makes the user change there password after the first time they login
 	chage -d 0 $username
-	echo -e "Creating email...\nSubject: Your temp account passsword\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass"
+	echo -e "Creating email...\nFrom: Richard T Swierk\nSubject: CSI230 Project 2 - Your temp account passsword\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass"
 	#Create the email
-	echo -e 'From: Richard T Swierk\nSubject: Your temp account password\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass' > email.txt
+	echo -e 'From: Richard T Swierk\nSubject: CSI230 Project 2 - Your temp account password\nPassword must be changed after first login\nUsername: $username\nPassword: $tempPass' > email.txt
 	echo -e "Sending email..."
 	#Send the email
 	sendmail $email < email.txt
